@@ -1,6 +1,12 @@
+# These imports are necessary for the random number generator
 from random import randint
 from random import seed
 
+# used for assignment_1
+def print_hi(name):
+    print(f'Hi, {name}')
+
+# used for assignment_2
 def get_info():
     name = input("Enter your name: ")
     print(f'Hello, {name}')
@@ -9,10 +15,7 @@ def get_info():
     word = input("Enter a word: ")
     print(f'The length of \'{word}\' is {word.__len__()}')
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
+# used for assignment_3
 def print_art():
     #   |                   |
     #   |                   |
@@ -61,6 +64,7 @@ def print_art():
 
 def flip_coin(i):
 
+
     choice = 2
     while choice != 1 and choice != 0:
         choice = int(input("Select '0' or '1': "))
@@ -76,7 +80,47 @@ def flip_coin(i):
     else:
         print("You lost :(")
 
-if __name__ == '__main__':
+# LINES 85 - 114 WORK IN PROGRESS
+# used for assignment_4
+def print_board(pos: int, val: str):
+    # +-------+-------+-------+
+    # |       |       |       |
+    # |   1   |   2   |   3   |
+    # |       |       |       |
+    # +-------+-------+-------+
+    # |       |       |       |
+    # |   4   |   5   |   6   |
+    # |       |       |       |
+    # +-------+-------+-------+
+    # |       |       |       |
+    # |   7   |   8   |   9   |
+    # |       |       |       |
+    # +-------+-------+-------+
+    positions = [' ',' ',' ',' ',' ',' ',' ',' ',' ']
+    if positions[pos] != ' ':
+        return -1
+    else:
+        positions[pos] = str
+
+def get_user_selection():
+    selection = int(input("Select your location: "))
+    while print_board(selection, 'O') == -1:
+        selection = int(input("Invalid input\n Please select again: "))
+
+def tic_tac_toe():
+    print_board(5,'X')
+    selection = get_user_selection()
+    print_board(selection, 'O')
+        
+
+# these are used to only have function calls in the main script
+def assignment_1():
+    print_hi('Nathan Gershman')
+
+def assignment_2():
+    get_info()
+
+def assignment_3():
     resp = 1
     counter = 1
     while resp == 1:
@@ -96,3 +140,14 @@ if __name__ == '__main__':
         else:
             resp = 0
         counter+=1
+
+def assignment_4():
+    print()
+
+# if the file name is __main__ than run these methods
+if __name__ == '__main__':
+# Uncomment to view results of each assignment 
+#    assignment_1()
+#    assignment_2()
+#    assignment_3()
+    print()
