@@ -1,32 +1,18 @@
-import threading
-from queue import Queue
-import time
+import sys
 
-print_lock = threading.Lock()
-
-def job(worker):
-    time.sleep(3)
-    with print_lock:
-        print(threading.current_thread().name, worker)
-
-def threader():
-    while True:
-        worker = q.get()
-        job(worker)
-        q.task_done()
-
-q = Queue()
-
-for x in range(10):
-    t = threading.Thread(target = threader)
-    t.daemon = True
-    t.start()
-
-start = time.time()
-
-for worker in range(20):
-    q.put(worker)
-
-q.join()
-
-print('Done')
+if __name__ == '__main__':
+    vouels = ['a','A','e','E','i','I','o','O','u','U','y','Y']
+    for i in range(len(sys.argv)):
+        
+        if i != 0:
+            elem = sys.argv[i]
+            if elem[0] in vouels:
+                print(elem+'yay', end=' ')
+            if elem[0] not in vouels and elem[1] not in vouels:
+                sub = elem[:2]
+                subelem = elem[2:] + sub + 'ay'
+                print(subelem, end=' ')
+            elif elem[0] not in vouels:
+                sub = elem[:1]
+                subelem = elem[1:] + sub + 'ay'
+                print(subelem, end=' ')
